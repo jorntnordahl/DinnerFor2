@@ -9,9 +9,11 @@
 #import "MasterViewController.h"
 
 #import "DetailViewController.h"
+#import "Recipe.h"
+#import "RecipeBook.h"
 
 @interface MasterViewController () {
-    NSMutableArray *_objects;
+    RecipeBook *recipeBook;
 }
 @end
 
@@ -24,7 +26,7 @@
 
 - (void)dealloc
 {
-    [_objects release];
+    [recipeBook release];
     [super dealloc];
 }
 
@@ -46,12 +48,17 @@
 
 - (void)insertNewObject:(id)sender
 {
-    if (!_objects) {
-        _objects = [[NSMutableArray alloc] init];
+    if (!recipeBook) {
+        recipeBook = [[RecipeBook alloc] initWithName:@"Jorns RecipeBook"];
     }
-    [_objects insertObject:[NSDate date] atIndex:0];
+    
+    // create a new recipe and insert into first position:
+    Recipe *recipe = [[Recipe alloc] init];
+    [recipe setName:@"New Recipe"];
+    [recipeBook addRecipe:recipe];
+
     NSIndexPath *indexPath = [NSIndexPath indexPathForRow:0 inSection:0];
-    [self.tableView insertRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
+    [self.tableView insertRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationMiddle];
 }
 
 #pragma mark - Table View
@@ -63,15 +70,15 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return _objects.count;
+    return recipeBook.entries;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell" forIndexPath:indexPath];
 
-    NSDate *object = _objects[indexPath.row];
-    cell.textLabel.text = [object description];
+    Recipe *recipe = [recipeBook findByIndex:indexPath.row];
+    cell.textLabel.text = recipe.name;
     return cell;
 }
 
@@ -84,35 +91,34 @@
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
 {
     if (editingStyle == UITableViewCellEditingStyleDelete) {
-        [_objects removeObjectAtIndex:indexPath.row];
+        [recipeBook removeRecipeAtIndex:indexPath.row];
         [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
     } else if (editingStyle == UITableViewCellEditingStyleInsert) {
         // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view.
     }
 }
 
-/*
+
 // Override to support rearranging the table view.
 - (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath
 {
 }
-*/
 
-/*
+
 // Override to support conditional rearranging of the table view.
 - (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath
 {
     // Return NO if you do not want the item to be re-orderable.
     return YES;
 }
-*/
+
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
     if ([[segue identifier] isEqualToString:@"showDetail"]) {
         NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
-        NSDate *object = _objects[indexPath.row];
-        [[segue destinationViewController] setDetailItem:object];
+        Recipe *recipe = [recipeBook findByIndex:indexPath.row];
+        [[segue destinationViewController] setDetailItem:recipe];
     }
 }
 

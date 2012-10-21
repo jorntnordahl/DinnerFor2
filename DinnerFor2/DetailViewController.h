@@ -8,10 +8,14 @@
 
 #import <UIKit/UIKit.h>
 
+#import "Recipe.h"
+
 @interface DetailViewController : UIViewController
 
-@property (strong, nonatomic) id detailItem;
+@property (nonatomic, retain) IBOutlet UITextField *nameTextField;
+@property (nonatomic, retain) IBOutlet UITextView *ingredientsTextView;
+@property (nonatomic, retain) IBOutlet UITextView *directionsTextView;
 
-@property (strong, nonatomic) IBOutlet UILabel *detailDescriptionLabel;
+@property (nonatomic, retain) Recipe *recipe;
 
 @end

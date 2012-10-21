@@ -8,26 +8,33 @@
 
 #import "DetailViewController.h"
 
+#import "Recipe.h"
+#import "RecipeBook.h"
+
 @interface DetailViewController ()
 - (void)configureView;
 @end
 
 @implementation DetailViewController
 
+@synthesize nameTextField, ingredientsTextView, directionsTextView, recipe;
+
 - (void)dealloc
 {
-    [_detailItem release];
-    [_detailDescriptionLabel release];
+    [recipe release];
+    [nameTextField release];
+    [ingredientsTextView release];
+    [directionsTextView release];
     [super dealloc];
 }
 
 #pragma mark - Managing the detail item
 
-- (void)setDetailItem:(id)newDetailItem
+- (void)setDetailItem:(Recipe *)newRecipe
 {
-    if (_detailItem != newDetailItem) {
-        [_detailItem release];
-        _detailItem = [newDetailItem retain];
+    if (newRecipe != recipe) {
+        [recipe release];
+        recipe = [newRecipe retain];
 
         // Update the view.
         [self configureView];
@@ -37,9 +44,10 @@
 - (void)configureView
 {
     // Update the user interface for the detail item.
-
-    if (self.detailItem) {
-        self.detailDescriptionLabel.text = [self.detailItem description];
+    if (self.recipe) {
+        self.nameTextField.text = [self.recipe name];
+        self.ingredientsTextView.text = [self.recipe ingredients];
+        self.directionsTextView.text = [self.recipe directions];
     }
 }
 
