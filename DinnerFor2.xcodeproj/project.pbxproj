@@ -17,8 +17,8 @@
 		B1B29709163479AB0044E8CF /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B1B29708163479AB0044E8CF /* Default@2x.png */; };
 		B1B2970B163479AB0044E8CF /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B1B2970A163479AB0044E8CF /* Default-568h@2x.png */; };
 		B1B2970E163479AB0044E8CF /* MainStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B1B2970C163479AB0044E8CF /* MainStoryboard.storyboard */; };
-		B1B29711163479AB0044E8CF /* MasterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B1B29710163479AB0044E8CF /* MasterViewController.m */; };
-		B1B29714163479AB0044E8CF /* DetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B1B29713163479AB0044E8CF /* DetailViewController.m */; };
+		B1B29711163479AB0044E8CF /* RecipeBookViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B1B29710163479AB0044E8CF /* RecipeBookViewController.m */; };
+		B1B29714163479AB0044E8CF /* RecipeDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B1B29713163479AB0044E8CF /* RecipeDetailViewController.m */; };
 		B1B29720163491D40044E8CF /* Recipe.m in Sources */ = {isa = PBXBuildFile; fileRef = B1B2971F163491D40044E8CF /* Recipe.m */; };
 		B1B2972316349FD60044E8CF /* RecipeBook.m in Sources */ = {isa = PBXBuildFile; fileRef = B1B2972216349FD60044E8CF /* RecipeBook.m */; };
 /* End PBXBuildFile section */
@@ -38,10 +38,10 @@
 		B1B29708163479AB0044E8CF /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
 		B1B2970A163479AB0044E8CF /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		B1B2970D163479AB0044E8CF /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/MainStoryboard.storyboard; sourceTree = "<group>"; };
-		B1B2970F163479AB0044E8CF /* MasterViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MasterViewController.h; sourceTree = "<group>"; };
-		B1B29710163479AB0044E8CF /* MasterViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MasterViewController.m; sourceTree = "<group>"; };
-		B1B29712163479AB0044E8CF /* DetailViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DetailViewController.h; sourceTree = "<group>"; };
-		B1B29713163479AB0044E8CF /* DetailViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DetailViewController.m; sourceTree = "<group>"; };
+		B1B2970F163479AB0044E8CF /* RecipeBookViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RecipeBookViewController.h; sourceTree = "<group>"; };
+		B1B29710163479AB0044E8CF /* RecipeBookViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RecipeBookViewController.m; sourceTree = "<group>"; };
+		B1B29712163479AB0044E8CF /* RecipeDetailViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RecipeDetailViewController.h; sourceTree = "<group>"; };
+		B1B29713163479AB0044E8CF /* RecipeDetailViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RecipeDetailViewController.m; sourceTree = "<group>"; };
 		B1B2971E163491D40044E8CF /* Recipe.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Recipe.h; sourceTree = "<group>"; };
 		B1B2971F163491D40044E8CF /* Recipe.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Recipe.m; sourceTree = "<group>"; };
 		B1B2972116349FD60044E8CF /* RecipeBook.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RecipeBook.h; sourceTree = "<group>"; };
@@ -95,10 +95,10 @@
 				B1B29703163479AB0044E8CF /* AppDelegate.h */,
 				B1B29704163479AB0044E8CF /* AppDelegate.m */,
 				B1B2970C163479AB0044E8CF /* MainStoryboard.storyboard */,
-				B1B2970F163479AB0044E8CF /* MasterViewController.h */,
-				B1B29710163479AB0044E8CF /* MasterViewController.m */,
-				B1B29712163479AB0044E8CF /* DetailViewController.h */,
-				B1B29713163479AB0044E8CF /* DetailViewController.m */,
+				B1B2970F163479AB0044E8CF /* RecipeBookViewController.h */,
+				B1B29710163479AB0044E8CF /* RecipeBookViewController.m */,
+				B1B29712163479AB0044E8CF /* RecipeDetailViewController.h */,
+				B1B29713163479AB0044E8CF /* RecipeDetailViewController.m */,
 				B1B2971E163491D40044E8CF /* Recipe.h */,
 				B1B2971F163491D40044E8CF /* Recipe.m */,
 				B1B2972116349FD60044E8CF /* RecipeBook.h */,
@@ -190,8 +190,8 @@
 			files = (
 				B1B29701163479AB0044E8CF /* main.m in Sources */,
 				B1B29705163479AB0044E8CF /* AppDelegate.m in Sources */,
-				B1B29711163479AB0044E8CF /* MasterViewController.m in Sources */,
-				B1B29714163479AB0044E8CF /* DetailViewController.m in Sources */,
+				B1B29711163479AB0044E8CF /* RecipeBookViewController.m in Sources */,
+				B1B29714163479AB0044E8CF /* RecipeDetailViewController.m in Sources */,
 				B1B29720163491D40044E8CF /* Recipe.m in Sources */,
 				B1B2972316349FD60044E8CF /* RecipeBook.m in Sources */,
 			);
@@ -308,6 +308,7 @@
 				B1B29719163479AB0044E8CF /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

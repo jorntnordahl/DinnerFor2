@@ -10,18 +10,17 @@
 
 @implementation Recipe
 
-@synthesize name, ingredients, directions;
-
--(void) setName:(NSString *)theName andIngredients:(NSString *)theIngredients andDirections:(NSString *)theDirections
+//the and thing is not really part of the convention.
+-(void) initWithName:(NSString *)name ingredients:(NSString *)ingredients directions:(NSString *)directions
 {
-    self.name = theName;
-    self.ingredients = theIngredients;
-    self.directions = theDirections;
+    self.name = name;
+    self.ingredients = ingredients;
+    self.directions = directions;
 }
 
 -(BOOL) isEqual:(Recipe *) theRecipe
 {
-    if ([name isEqualToString:theRecipe.name] == YES)
+    if ([_name isEqualToString:theRecipe.name] == YES)
     {
         return YES;
     }
@@ -31,12 +30,21 @@
     }
 }
 
+-(void) dealloc
+{
+    self.name = nil;
+    self.ingredients = nil;
+    self.directions = nil;
+    
+    [super dealloc];
+}
+
 -(void) print
 {
     NSLog(@"================================================");
-    NSLog(@"|           %-31s    |", [name UTF8String]);
-    NSLog(@"|           %s    |", [ingredients UTF8String]);
-    NSLog(@"|           %s    |", [directions UTF8String]);
+    NSLog(@"|           %-31s    |", [_name UTF8String]);
+    NSLog(@"|           %s    |", [_ingredients UTF8String]);
+    NSLog(@"|           %s    |", [_directions UTF8String]);
     NSLog(@"|                                              |");
     NSLog(@"|                O          O                  |");
     NSLog(@"================================================");

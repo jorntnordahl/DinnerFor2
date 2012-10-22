@@ -6,37 +6,17 @@
 //  Copyright (c) 2012 Jorn Nordahl. All rights reserved.
 //
 
-#import "DetailViewController.h"
+#import "RecipeDetailViewController.h"
 
 #import "Recipe.h"
-#import "RecipeBook.h"
 
-@interface DetailViewController ()
+@interface RecipeDetailViewController ()
 - (void)configureView;
 @end
 
-@implementation DetailViewController
-
-@synthesize nameTextField, ingredientsTextView, directionsTextView, recipe;
-
-- (void)dealloc
-{
-    [recipe release];
-    [nameTextField release];
-    [ingredientsTextView release];
-    [directionsTextView release];
-    [super dealloc];
-}
+@implementation RecipeDetailViewController
 
 #pragma mark - Managing the detail item
-
-- (void)setDetailItem:(Recipe *)aRecipe
-{
-    self.recipe = aRecipe;
-
-    // Update the view.
-    [self configureView];
-}
 
 - (void)configureView
 {
@@ -51,7 +31,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-	// Do any additional setup after loading the view, typically from a nib.
+	
     [self configureView];
 }
 

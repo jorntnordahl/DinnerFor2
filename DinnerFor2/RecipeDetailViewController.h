@@ -10,13 +10,15 @@
 
 #import "Recipe.h"
 
-@interface DetailViewController : UIViewController
+@interface RecipeDetailViewController : UIViewController
 
-@property (nonatomic, retain) IBOutlet UITextField *nameTextField;
-@property (nonatomic, retain) IBOutlet UITextView *ingredientsTextView;
-@property (nonatomic, retain) IBOutlet UITextView *directionsTextView;
+//the view retains these no need to retain them
+@property (nonatomic, assign) IBOutlet UITextField *nameTextField;
+@property (nonatomic, assign) IBOutlet UITextView *ingredientsTextView;
+@property (nonatomic, assign) IBOutlet UITextView *directionsTextView;
 
-@property (nonatomic, retain) Recipe *recipe;
+//just use assign since we know this is managed in a master list somewhere else
+@property (nonatomic, assign) Recipe *recipe;
 
--(void) setDetailItem:(Recipe *)aRecipe;
+
 @end
