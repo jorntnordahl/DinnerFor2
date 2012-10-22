@@ -30,8 +30,10 @@
     return [self initWithName:@"NoName"];
 }
 
--(void) addCard: (Recipe *) theRecipe
+// method adds the recipe to the list of recipes:
+-(void) addRecipe: (Recipe *) theRecipe
 {
+    [theRecipe retain];
     [book addObject:theRecipe];
 }
 
@@ -70,9 +72,6 @@
 
 -(void) sort
 {
-    // sort using a selector:
-    //[book sortUsingSelector:@selector(compareNames:)];
-    
     // sort using a comparator:
     [book sortUsingComparator:^NSComparisonResult(Recipe *obj1, Recipe *obj2) {
         NSLog(@"Comparator: %@ vs. %@", [obj1 name], [obj2 name]);
@@ -82,7 +81,25 @@
 
 -(Recipe *) findByIndex:(NSInteger) theRow
 {
-    return [book objectAtIndex:theRow];
+    if (!book)
+    {
+        NSLog(@"The book is null!!! WHY???");
+        return nil;
+    }
+    
+    if ([book count] == 0)
+    {
+        NSLog(@"The book contains zero objects!!! WHYY????");
+        return nil;
+    }
+    
+    Recipe *object = [book objectAtIndex:theRow];
+    if (!object)
+    {
+        NSLog(@"Unable to find object at index %i", theRow);
+        return nil;
+    }
+    return object;
 }
 
 -(void) removeRecipeAtIndex:(NSInteger) theRow

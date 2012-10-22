@@ -30,8 +30,10 @@
 
 #pragma mark - Managing the detail item
 
-- (void)setDetailItem:(Recipe *)newRecipe
+- (void)setDetailItem:(id)theObject
 {
+    Recipe *newRecipe = (Recipe *) theObject;
+    
     if (newRecipe != recipe) {
         [recipe release];
         recipe = [newRecipe retain];

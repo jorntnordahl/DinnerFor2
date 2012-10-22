@@ -49,12 +49,12 @@
 - (void)insertNewObject:(id)sender
 {
     if (!recipeBook) {
-        recipeBook = [[RecipeBook alloc] initWithName:@"Jorns RecipeBook"];
+        recipeBook = [[[RecipeBook alloc] initWithName:@"Jorns RecipeBook"]retain];
     }
     
     // create a new recipe and insert into first position:
-    Recipe *recipe = [[Recipe alloc] init];
-    [recipe setName:@"New Recipe"];
+    Recipe *recipe = [[[Recipe alloc] init]retain];
+    recipe.name = @"New Recipe";
     [recipeBook addRecipe:recipe];
 
     NSIndexPath *indexPath = [NSIndexPath indexPathForRow:0 inSection:0];
@@ -70,6 +70,7 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
+    NSLog(@"Table has %i rows", recipeBook.entries);
     return recipeBook.entries;
 }
 
@@ -100,25 +101,38 @@
 
 
 // Override to support rearranging the table view.
-- (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath
+/*
+ - (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath
 {
-}
+}*/
 
 
 // Override to support conditional rearranging of the table view.
-- (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath
+/*- (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath
 {
     // Return NO if you do not want the item to be re-orderable.
     return YES;
-}
+}*/
 
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
     if ([[segue identifier] isEqualToString:@"showDetail"]) {
         NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
-        Recipe *recipe = [recipeBook findByIndex:indexPath.row];
-        [[segue destinationViewController] setDetailItem:recipe];
+        @try
+        {
+            id recipe = [recipeBook findByIndex:indexPath.row];
+            if (!recipe)
+            {
+                NSLog(@"Unable to find the recope clicked...");
+            }
+            
+            // why is this showing me a warning?
+            [[segue destinationViewController] setDetailItem:recipe];
+        }
+        @catch (NSException *exception) {
+            NSLog(@"prepareForSegue: Caught %@: %@", [exception name], [exception reason]);
+        }
     }
 }
 

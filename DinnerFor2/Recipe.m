@@ -12,11 +12,6 @@
 
 @synthesize name, ingredients, directions;
 
--(void) setName: (NSString *) theName
-{
-    self.name = theName;
-}
-
 -(void) setName:(NSString *)theName andIngredients:(NSString *)theIngredients andDirections:(NSString *)theDirections
 {
     self.name = theName;

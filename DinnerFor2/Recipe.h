@@ -14,8 +14,6 @@
 @property (copy, nonatomic) NSString *ingredients;
 @property (copy, nonatomic) NSString *directions;
 
--(void) setName: (NSString *) theName;
-
 -(void) setName: (NSString *) theName andIngredients: (NSString *) theIngredients andDirections: (NSString *) theDirections;
 
 -(void) print;
