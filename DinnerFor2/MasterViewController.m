@@ -129,7 +129,7 @@
             }
             
             // why is this showing me a warning? --> needs a cast to you actual type and the specific property
-            [((DetailViewController*)[segue destinationViewController]) setRecipe:recipe];
+            [((DetailViewController*)[segue destinationViewController]) setDetailItem:recipe];
         }
         @catch (NSException *exception) {
             NSLog(@"prepareForSegue: Caught %@: %@", [exception name], [exception reason]);
