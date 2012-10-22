@@ -30,17 +30,12 @@
 
 #pragma mark - Managing the detail item
 
-- (void)setDetailItem:(id)theObject
+- (void)setDetailItem:(Recipe *)aRecipe
 {
-    Recipe *newRecipe = (Recipe *) theObject;
-    
-    if (newRecipe != recipe) {
-        [recipe release];
-        recipe = [newRecipe retain];
+    self.recipe = aRecipe;
 
-        // Update the view.
-        [self configureView];
-    }
+    // Update the view.
+    [self configureView];
 }
 
 - (void)configureView
