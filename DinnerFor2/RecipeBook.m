@@ -10,8 +10,6 @@
 
 @implementation RecipeBook
 
-@synthesize book, bookName;
-
 -(id) initWithName: (NSString *) name
 {
     self = [super init];
@@ -29,26 +27,26 @@
 // method adds the recipe to the list of recipes:
 -(void) addRecipe: (Recipe *) theRecipe
 {
-    [book addObject:theRecipe];
+    [_book addObject:theRecipe];
 }
 
 -(void) removeRecipe:(Recipe *)theRecipe
 {
-    [book removeObject:theRecipe];
+    [_book removeObject:theRecipe];
 }
 
 
 
 -(NSUInteger) entries
 {
-    return [book count];
+    return [_book count];
 }
 
 -(void) list
 {
-    if ([book count] > 0)
+    if ([_book count] > 0)
     {
-        for (Recipe *theRecipe in book)
+        for (Recipe *theRecipe in _book)
         {
             [theRecipe print];
         }
@@ -68,7 +66,7 @@
 -(void) sort
 {
     // sort using a comparator:
-    [book sortUsingComparator:^NSComparisonResult(Recipe *obj1, Recipe *obj2) {
+    [_book sortUsingComparator:^NSComparisonResult(Recipe *obj1, Recipe *obj2) {
         NSLog(@"Comparator: %@ vs. %@", [obj1 name], [obj2 name]);
         return [[obj1 name] compare: [obj2 name]];
     }];
@@ -76,19 +74,19 @@
 
 -(Recipe *) findByIndex:(NSInteger) theRow
 {
-    if (!book)
+    if (!_book)
     {
         NSLog(@"The book is null!!! WHY???");
         return nil;
     }
     
-    if ([book count] == 0)
+    if ([_book count] == 0)
     {
         NSLog(@"The book contains zero objects!!! WHYY????");
         return nil;
     }
     
-    Recipe *object = [book objectAtIndex:theRow];
+    Recipe *object = [_book objectAtIndex:theRow];
     if (!object)
     {
         NSLog(@"Unable to find object at index %i", theRow);
@@ -99,7 +97,16 @@
 
 -(void) removeRecipeAtIndex:(NSInteger) theRow
 {
-    [book removeObjectAtIndex:theRow];
+    [_book removeObjectAtIndex:theRow];
+}
+
+-(void) dealloc
+{
+    self.bookName = nil;
+    self.book = nil;
+    
+    [super dealloc];
+    
 }
 
 
