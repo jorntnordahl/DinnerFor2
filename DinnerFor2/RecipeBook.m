@@ -18,22 +18,17 @@
     
     if (self)
     {
-        bookName = [NSString stringWithString:name];
-        book = [NSMutableArray array];
+        self.bookName = [NSString stringWithString:name];
+        self.book = [NSMutableArray array];
     }
     
     return self;
 }
 
--(id) init
-{
-    return [self initWithName:@"NoName"];
-}
 
 // method adds the recipe to the list of recipes:
 -(void) addRecipe: (Recipe *) theRecipe
 {
-    [theRecipe retain];
     [book addObject:theRecipe];
 }
 

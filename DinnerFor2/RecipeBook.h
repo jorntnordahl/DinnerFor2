@@ -12,8 +12,8 @@
 
 @interface RecipeBook : NSObject
 
-@property (nonatomic, copy) NSString *bookName;
-@property (nonatomic, strong) NSMutableArray *book;
+@property (nonatomic, retain) NSString *bookName;
+@property (nonatomic, retain) NSMutableArray *book;
 
 -(id) initWithName: (NSString *) name;
 -(void) addRecipe: (Recipe *) theRecipe;
