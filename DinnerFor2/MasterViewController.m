@@ -49,11 +49,12 @@
 - (void)insertNewObject:(id)sender
 {
     if (!recipeBook) {
-        recipeBook = [[[RecipeBook alloc] initWithName:@"Jorns RecipeBook"]retain];
+        recipeBook = [[[RecipeBook alloc] initWithName:@"Jorns RecipeBook"] retain];
     }
     
     // create a new recipe and insert into first position:
-    Recipe *recipe = [[[Recipe alloc] init]retain];
+    //dont retain here you dont own the object always autorelease
+    Recipe *recipe = [[[Recipe alloc] init] autorelease];
     recipe.name = @"New Recipe";
     [recipeBook addRecipe:recipe];
 
@@ -127,8 +128,8 @@
                 NSLog(@"Unable to find the recope clicked...");
             }
             
-            // why is this showing me a warning?
-            [[segue destinationViewController] setDetailItem:recipe];
+            // why is this showing me a warning? --> needs a cast to you actual type and the specific property
+            [((DetailViewController*)[segue destinationViewController]) setRecipe:recipe];
         }
         @catch (NSException *exception) {
             NSLog(@"prepareForSegue: Caught %@: %@", [exception name], [exception reason]);
