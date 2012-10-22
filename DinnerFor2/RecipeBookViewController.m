@@ -6,18 +6,18 @@
 //  Copyright (c) 2012 Jorn Nordahl. All rights reserved.
 //
 
-#import "MasterViewController.h"
+#import "RecipeBookViewController.h"
 
-#import "DetailViewController.h"
+#import "RecipeDetailViewController.h"
 #import "Recipe.h"
 #import "RecipeBook.h"
 
-@interface MasterViewController () {
+@interface RecipeBookViewController () {
     RecipeBook *recipeBook;
 }
 @end
 
-@implementation MasterViewController
+@implementation RecipeBookViewController
 
 - (void)awakeFromNib
 {
@@ -115,26 +115,22 @@
     return YES;
 }*/
 
-
+//no try catch blocks dude for this kind of code if that was genned by apple Im shocked.
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
     if ([[segue identifier] isEqualToString:@"showDetail"]) {
         NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
-        @try
-        {
-            id recipe = [recipeBook findByIndex:indexPath.row];
-            if (!recipe)
-            {
-                NSLog(@"Unable to find the recope clicked...");
-            }
-            
-            // why is this showing me a warning? --> needs a cast to you actual type and the specific property
-            [((DetailViewController*)[segue destinationViewController]) setDetailItem:recipe];
-        }
-        @catch (NSException *exception) {
-            NSLog(@"prepareForSegue: Caught %@: %@", [exception name], [exception reason]);
-        }
+       
+            Recipe *recipe = [recipeBook findByIndex:indexPath.row];
+        
+            assert(recipe);
+        
+            //the ViewControllers viewDidLoad has not been called yet we dont need to call a special
+            //setter we can just set the recipe property and let the view init internally in viewDidLoad
+
+            ((RecipeDetailViewController*)[segue destinationViewController]).recipe = recipe;
     }
+           
 }
 
 @end

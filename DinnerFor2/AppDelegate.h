@@ -8,9 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-#import "RecipeBook.h"
-#import "Recipe.h"
-
 @interface AppDelegate : UIResponder <UIApplicationDelegate>
 
 @property (strong, nonatomic) UIWindow *window;

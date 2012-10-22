@@ -10,11 +10,11 @@
 
 @interface Recipe : NSObject
 
-@property (copy, nonatomic) NSString *name;
-@property (copy, nonatomic) NSString *ingredients;
-@property (copy, nonatomic) NSString *directions;
+@property (retain, nonatomic) NSString *name;
+@property (retain, nonatomic) NSString *ingredients;
+@property (retain, nonatomic) NSString *directions;
 
--(void) setName: (NSString *) theName andIngredients: (NSString *) theIngredients andDirections: (NSString *) theDirections;
+-(void) initWithName: (NSString *) name ingredients: (NSString *) ingredients directions: (NSString *) directions;
 
 -(void) print;
 
