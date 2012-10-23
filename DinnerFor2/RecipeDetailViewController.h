@@ -20,5 +20,9 @@
 //just use assign since we know this is managed in a master list somewhere else
 @property (nonatomic, assign) Recipe *recipe;
 
+// actions done inside the detail view:
+-(IBAction)textFieldDoneEditing:(id)sender;
+-(IBAction)saveButtonTapped:(id)sender;
+
 
 @end

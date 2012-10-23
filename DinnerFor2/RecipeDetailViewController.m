@@ -41,4 +41,16 @@
     // Dispose of any resources that can be recreated.
 }
 
+
+-(IBAction)textFieldDoneEditing:(id)sender
+{
+    [sender resignFirstResponder];
+}
+
+-(IBAction)saveButtonTapped:(id)sender
+{
+    NSLog(@"Save Clicked");
+}
+
+
 @end

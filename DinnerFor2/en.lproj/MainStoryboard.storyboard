@@ -74,8 +74,9 @@
                         <subviews>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Name" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="qfc-k1-wvL">
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <textInputTraits key="textInputTraits"/>
+                                <textInputTraits key="textInputTraits" returnKeyType="done"/>
                                 <connections>
+                                    <action selector="textFieldDoneEditing:" destination="21" eventType="editingDidEndOnExit" id="NIn-Xt-fSG"/>
                                     <outlet property="delegate" destination="21" id="kYN-mG-wNp"/>
                                 </connections>
                             </textField>
@@ -98,35 +99,51 @@
                             </label>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="d6k-lf-Qf2">
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="172" id="MS5-zd-XmK"/>
-                                </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences" returnKeyType="done"/>
                             </textView>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="js5-kY-EzS">
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="137" id="utM-1M-EBo"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences" returnKeyType="done"/>
                             </textView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TE0-Gg-Wk5">
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                <state key="normal" title="Save">
+                                    <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <state key="highlighted">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="saveButtonTapped:" destination="21" eventType="touchUpInside" id="emU-Wm-f0Z"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="0.43645613809233358" green="0.548758708839443" blue="0.66666666666666663" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstItem="qfc-k1-wvL" firstAttribute="top" secondItem="22" secondAttribute="top" constant="20" symbolic="YES" type="default" id="0bH-IP-s0M"/>
                             <constraint firstAttribute="trailing" secondItem="d6k-lf-Qf2" secondAttribute="trailing" constant="20" symbolic="YES" type="default" id="4UZ-G4-KeD"/>
+                            <constraint firstAttribute="bottom" secondItem="TE0-Gg-Wk5" secondAttribute="bottom" constant="20" symbolic="YES" type="default" id="6Dm-pL-XVy"/>
                             <constraint firstItem="cWF-3u-0Ed" firstAttribute="top" secondItem="d6k-lf-Qf2" secondAttribute="bottom" constant="8" symbolic="YES" type="default" id="AcD-mC-EkX"/>
                             <constraint firstItem="cWF-3u-0Ed" firstAttribute="trailing" secondItem="YMB-Ay-yKO" secondAttribute="trailing" type="default" id="SnQ-2a-s6A"/>
-                            <constraint firstAttribute="bottom" secondItem="js5-kY-EzS" secondAttribute="bottom" constant="20" symbolic="YES" type="default" id="Svo-6b-L4v"/>
                             <constraint firstItem="js5-kY-EzS" firstAttribute="top" secondItem="cWF-3u-0Ed" secondAttribute="bottom" constant="8" symbolic="YES" type="default" id="TOW-WH-L0h"/>
                             <constraint firstItem="YMB-Ay-yKO" firstAttribute="leading" secondItem="22" secondAttribute="leading" constant="20" symbolic="YES" type="default" id="XYK-ge-VSW"/>
+                            <constraint firstItem="TE0-Gg-Wk5" firstAttribute="top" secondItem="js5-kY-EzS" secondAttribute="bottom" constant="8" symbolic="YES" type="default" id="Ztf-yO-b8E"/>
                             <constraint firstAttribute="trailing" secondItem="js5-kY-EzS" secondAttribute="trailing" constant="20" symbolic="YES" type="default" id="hkK-hW-1th"/>
                             <constraint firstItem="cWF-3u-0Ed" firstAttribute="leading" secondItem="22" secondAttribute="leading" constant="20" symbolic="YES" type="default" id="k9N-wj-oA0"/>
                             <constraint firstAttribute="trailing" secondItem="qfc-k1-wvL" secondAttribute="trailing" constant="20" symbolic="YES" type="default" id="lFV-ov-HD5"/>
                             <constraint firstItem="YMB-Ay-yKO" firstAttribute="top" secondItem="qfc-k1-wvL" secondAttribute="bottom" constant="8" symbolic="YES" type="default" id="lGV-RL-dSc"/>
                             <constraint firstItem="js5-kY-EzS" firstAttribute="leading" secondItem="22" secondAttribute="leading" constant="20" symbolic="YES" type="default" id="lyu-Pf-Ejx"/>
                             <constraint firstItem="d6k-lf-Qf2" firstAttribute="top" secondItem="YMB-Ay-yKO" secondAttribute="bottom" constant="8" symbolic="YES" type="default" id="m20-jQ-bVr"/>
+                            <constraint firstItem="TE0-Gg-Wk5" firstAttribute="leading" secondItem="22" secondAttribute="leading" constant="20" symbolic="YES" type="default" id="v0g-Px-oNd"/>
                             <constraint firstItem="qfc-k1-wvL" firstAttribute="leading" secondItem="22" secondAttribute="leading" constant="20" symbolic="YES" type="default" id="vSp-kP-rYW"/>
                             <constraint firstItem="d6k-lf-Qf2" firstAttribute="leading" secondItem="22" secondAttribute="leading" constant="20" symbolic="YES" type="default" id="x4y-yE-ev0"/>
+                            <constraint firstAttribute="trailing" secondItem="TE0-Gg-Wk5" secondAttribute="trailing" constant="20" symbolic="YES" type="default" id="ziJ-1J-dmi"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Dinner Recipe" id="26"/>
@@ -145,9 +162,14 @@
         <class className="NSLayoutConstraint" superclassName="NSObject">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/NSLayoutConstraint.h"/>
         </class>
+        <class className="RecipeBookViewController" superclassName="UITableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/RecipeBookViewController.h"/>
+        </class>
         <class className="RecipeDetailViewController" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/RecipeDetailViewController.h"/>
             <relationships>
+                <relationship kind="action" name="saveButtonTapped:"/>
+                <relationship kind="action" name="textFieldDoneEditing:"/>
                 <relationship kind="outlet" name="directionsTextView" candidateClass="UITextView"/>
                 <relationship kind="outlet" name="ingredientsTextView" candidateClass="UITextView"/>
                 <relationship kind="outlet" name="nameTextField" candidateClass="UITextField"/>

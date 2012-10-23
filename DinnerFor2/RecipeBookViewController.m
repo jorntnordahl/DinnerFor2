@@ -60,6 +60,14 @@
 
     NSIndexPath *indexPath = [NSIndexPath indexPathForRow:0 inSection:0];
     [self.tableView insertRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationMiddle];
+    
+    /*RecipeDetailViewController *detailController = [[RecipeDetailViewController alloc] initWithNibName:@"MainStoryBoard.storyboard" bundle:nil];
+    [self presentViewController:detailController animated:YES completion:nil];
+    
+    
+    
+    [detailController release];
+    */
 }
 
 #pragma mark - Table View
@@ -99,21 +107,6 @@
         // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view.
     }
 }
-
-
-// Override to support rearranging the table view.
-/*
- - (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath
-{
-}*/
-
-
-// Override to support conditional rearranging of the table view.
-/*- (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    // Return NO if you do not want the item to be re-orderable.
-    return YES;
-}*/
 
 //no try catch blocks dude for this kind of code if that was genned by apple Im shocked.
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
